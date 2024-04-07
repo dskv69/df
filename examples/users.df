@@ -1,0 +1,16 @@
+[Student] # table named student
+    [
+        (id: Int32, name: Str, subjects: Arr[string]) # layout in ()
+
+        {
+            0, "Jake", ["biology", "chemistry", "physics"]  #data
+        }
+
+        {
+            0, "Jhon", ["biology", "chemistry", "physics", English]
+        }
+    ];
+
+
+
+let school_name = "XYZ";

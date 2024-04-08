@@ -2,7 +2,7 @@
 
 namespace DF
 {
-    Table::Table(TableData data) : m_data(data)
+    Table::Table(TableData_t data) : m_data(data)
     {
     }
 

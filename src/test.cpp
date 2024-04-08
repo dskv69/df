@@ -1,6 +1,7 @@
 #include <iostream>
 #include "df/common.h"
 #include "df/table.h"
+#include "df/DF.h"
 #include <string>
 
 int main(int argc, char *argv[])
@@ -19,12 +20,15 @@ int main(int argc, char *argv[])
         }
     ];)";
 
-    int hi = 69;
-    void *hi_ref = &hi;
-    DF::TableDataC dat = {{{"hi", hi_ref}}};
-    auto tab = DF::Table(&dat);
+    auto df = DF::DFData();
 
-    std::cout << *tab.get_data<int>(0, "hi") << '\n';
-    std::cout << *(int *)hi_ref << '\n';
+    std::any* hi = df.add_val(69);
+    DF::TableDataC_t dat = {{{"hi", hi}}};
+    auto tab = DF::Table(&dat);
+    df.add_table("test_table", tab);
+    auto first_row = df.get_table("test_table").get_row(0);
+
+    std::cout << first_row.get_data<int>("hi") << '\n';
+
     return 0;
 }
